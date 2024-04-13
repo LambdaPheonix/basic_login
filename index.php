@@ -25,6 +25,7 @@ require_once "../HTML_builder_class/html_builder.php";
 			// role
 				// will make default for now as it is not important
 
+// main buttons
 $sign_up_button = new HTML_text_builder("button", "sign_up", "generic_button", "title = 'click to sign up'", "Sign up");
 $login_button = new HTML_text_builder("button", "login", "generic_button", "title = 'click to log in'", "Login");
 $login_button = $login_button->build();
@@ -33,6 +34,22 @@ $sign_up_button = $sign_up_button->build();
 $buttons_layout = [$login_button, $sign_up_button];
 
 $button_container = new HTML_text_builder("div", null, "button_container", null, implode("<br>", $buttons_layout));
+
+// dialog basics
+$dialog_heading = "";
+$dialog_heading = $dialog_heading->build();
+$dialog_content = "";
+$dialog_content = $dialog_content->build();
+$dialog_buttons = "";
+$dialog_buttons = $dialog_buttons->build();
+
+$dialog_layout = [
+	$dialog_heading,
+	$dialog_content,
+	$dialog_buttons
+];
+
+$dialog_container = new HTML_text_builder("div", "dialog_container", "hidden", null, );
 
 $body = new HTML_text_builder("body", null, null, null, $button_container);
 
