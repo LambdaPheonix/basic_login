@@ -8,27 +8,29 @@ $(document).ready(function()
 		let clickAJAX = $(scope).find(".init-click");
 		clickAJAX.each(element =>
 		{
-			let has_attribute = element.attr('content_url') !== undefined;
-			if(has_attribute)
+			let content_url = assignAttr(element, "content_url");
+			let save_url = assignAttr(element, "save_url");
+			let success_function = assignAttr(element, "success_function");
+
+			if(content_url && save_url)
 			{
-				let content_url = element.attr("content_url");
+				element.on("click", function()
+				{
+					element.ajax()
+				});
 			}
-
-			element.on("click", function()
-			{
-
-			});
 		});
 	}
 
-	function checkAttribute(html_element ,attr_name, assign_to)
+	function assignAttr(html_element, attr_name)
 	{
-		// note this is a procedure using an argument with ".value" will change the value of the argument
 		let element = $(html_element);
 		let has_attribute = element.attr(attr_name) !== undefined;
 		if(has_attribute)
 		{
-			assign_to.value = element.attr(attr_name);
+			return element.attr(attr_name);
 		}
+
+		return false;
 	}
 });
